@@ -33,7 +33,5 @@ route.post('/text-mail', (req,res)=>{
     })
 
 });
-//Sincronizando tabela criada pelo sequelize, se e somente se, a tabela se chamar "Emails"
-await sequelize.sync({ force: true, match: /Emails%/});
 app.listen(port);
 
