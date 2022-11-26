@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = '8000';
 const nodemailer = require('nodemailer');
+const sequelize = require ('sequelize');
 
 var transporter = nodemailer.createTransport({
     port:465,
@@ -32,6 +33,7 @@ route.post('/text-mail', (req,res)=>{
     })
 
 });
-
+//Sincronizando tabela criada pelo sequelize, se e somente se, a tabela se chamar "Emails"
+await sequelize.sync({ force: true, match: /Emails%/});
 app.listen(port);
 
