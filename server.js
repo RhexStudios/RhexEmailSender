@@ -6,7 +6,7 @@ const sequelize = require ('sequelize');
 //banco de dados
 const database = require('./Infra/Database');
 
-//#region conexão com o banco de dados
+//#region - conexão com o banco de dados -
 (async () => {
     try { 
         const result = await database.sync();
