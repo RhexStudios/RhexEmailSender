@@ -4,6 +4,7 @@ RhexEmailSender uma API de envio/redirecionamento de e-mails para as futuras apl
 ## Modulos externos sendo utilizados no momento:
  - Express
  - Nodemailer
+ - Sequelize
  
  # Comandos do git no terminal:
  
