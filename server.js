@@ -3,6 +3,19 @@ const app = express();
 const port = '8000';
 const nodemailer = require('nodemailer');
 const sequelize = require ('sequelize');
+//banco de dados
+const database = require('./Infra/Database');
+
+//#region conexão com o banco de dados
+(async () => {
+    try { 
+        const result = await database.sync();
+        console.log( result );
+    } catch (error) {
+        console.log( error );
+    }
+})();
+//#endregion
 
 var transporter = nodemailer.createTransport({
     port:465,
