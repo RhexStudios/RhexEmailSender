@@ -4,7 +4,7 @@ const port = '8000';
 const nodemailer = require('nodemailer');
 const sequelize = require ('sequelize');
 //banco de dados
-const database = require('./Config/DatabaseConfig');
+const database = require('./Config/DbConfig');
 
 //#region - conexão com o banco de dados -
 (async () => {
@@ -46,5 +46,6 @@ route.post('/text-mail', (req,res)=>{
     })
 
 });
-app.listen(port);
+app.listen(3333);
+
 
