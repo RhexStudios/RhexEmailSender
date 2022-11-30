@@ -1,10 +1,8 @@
-const { Sequelize } = require('sequelize');
 const email = require('../Domain/Models/EmailModel');
 const { db } = require('./Database');
-const { express, Request, Response } = require('express');
 
 //#region - Post -
-const postEmail = async (req, res) => {
+const createEmail = async (req, res) => {
   try {
     const mail = req.body;
     await email.create(

@@ -1,14 +1,20 @@
 const express = require("express");
 const { Sequelize, DataTypes } = require('sequelize');
 
-class Email extends Model {
-}
+class Email extends Model {}
 
 Email.init({
-
+  //Id do Email
+  id: {
+    type: DataTypes.NUMBER,
+    primaryKey: true,
+    autoIncrement: true,
+  },
   //Destinatário - Destino
   addressee: {
     type: DataTypes.STRING,
+    isEmail: true,
+    allowNull: true,
   },
   //Remetente - Quem envia
   sender: {
@@ -18,12 +24,14 @@ Email.init({
   //Assunto
   subject: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    NotEmpty : true,
   },
   //Corpo do Email
   body: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: false,
+    NotEmpty: true,
   } 
 })
 (async () => {
