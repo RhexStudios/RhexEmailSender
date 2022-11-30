@@ -4,7 +4,7 @@ const port = '8000';
 const nodemailer = require('nodemailer');
 const sequelize = require ('sequelize');
 //banco de dados
-const database = require('./Infra/Database');
+const database = require('./Config/DatabaseConfig');
 
 //#region - conexão com o banco de dados -
 (async () => {

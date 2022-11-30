@@ -1,5 +1,5 @@
 const email = require('../Domain/Models/EmailModel');
-const { db } = require('./Database');
+const { db } = require('../Config/DatabaseConfig');
 
 //#region - Post -
 const createEmail = async (req, res) => {
