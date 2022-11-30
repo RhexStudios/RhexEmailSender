@@ -5,7 +5,7 @@ RhexEmailSender uma API de envio/redirecionamento de e-mails para as futuras apl
  - Express
  - Nodemailer
  
- #Comandos do git no terminal:
+ # Comandos do git no terminal:
  
  - git branch - Verificando branch atual
  - git checkout {nome_da_branch} - Alterando branch de trabalho
