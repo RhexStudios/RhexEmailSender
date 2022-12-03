@@ -19,3 +19,11 @@ RhexEmailSender uma API de envio/redirecionamento de e-mails para as futuras apl
  - git push - Enviando alterações para o repositório
  
  - git pull - Atualizado branch com informações do repositório
+
+# Estrutura do projeto:
+O projeto estará estruturado da seguinte maneira:
+
+ - Api -> Camada de comunicação com o front;
+ - Config -> Camada de configurações diversas da api;
+ - Domain -> Camada de estruturação básica, contendo models e ( se necessário ) middlewares e etc.
+ - Infra -> Camada de comunicação com o bd, contendo conexão, mappers ( ou migrations ) e cruds do banco;
