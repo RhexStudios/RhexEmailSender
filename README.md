@@ -5,6 +5,9 @@ RhexEmailSender uma API de envio/redirecionamento de e-mails para as futuras apl
  - Express
  - Nodemailer
  - Sequelize
+ - nodemon
+ - mysql2
+ - dotenv
  
  # Comandos do git no terminal:
  
