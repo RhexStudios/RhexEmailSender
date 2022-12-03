@@ -9,6 +9,7 @@ Email.init({
     type: DataTypes.NUMBER,
     primaryKey: true,
     autoIncrement: true,
+    allowNull: false,
   },
   //Destinatário - Destino
   addressee: {
@@ -32,8 +33,17 @@ Email.init({
     type: DataTypes.STRING,
     allowNull: false,
     NotEmpty: true,
-  } 
-})
+  },
+  created_at: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+  updated_at: {
+    type: DataTypes.DATE,
+    allowNull: false,
+  },
+});
+
 (async () => {
   //Sincronizando tabela criada pelo sequelize, se e somente se, a tabela se chamar "Emails"
   await sequelize.sync({ force: true, match: /Emails%/});

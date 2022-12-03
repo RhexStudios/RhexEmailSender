@@ -1,14 +1,23 @@
 {
   "development": {
-    "dialect": "sqlite",
-    "storage": "./storage_development"
+    "username": "root",
+    "password": null,
+    "database": "rhexMail_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
-  "test" : {
-    "dialect": "sqlite",
-    "storage": ":memory"
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "rhexMail_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   },
   "production": {
-    "dialect": "sqlite",
-    "storage": "./storage_production"
+    "username": "root",
+    "password": null,
+    "database": "rhexMail_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
   }
 }
