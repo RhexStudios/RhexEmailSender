@@ -31,5 +31,35 @@ module.exports = {
       res.sendStatus( 400 );
     }
   },
+
+  async getEmailBySubject( req, res ) {
+    try {
+
+      const query = req.params;
+      const email = await Email.findOne({ where: { subject: query } })
+      
+      res.send.json ( email );
+      res.sendStatus( 200 );
+    } catch ( err ) {
+
+      res.json( err );
+      res.sendStatus( 400 );
+    }
+  },
+
+  async getAllEmailsBySubject( req, res ) {
+    try { 
+
+      const query = req.params;
+      const email = await Email.findAll({ where: { subject: query } })
+      
+      res.send.json ( email );
+      res.sendStatus( 200 );
+    } catch ( err ) {
+
+      res.json( err );
+      res.sendStatus( 400 );
+    }
+  }
   //#endregion
 };

@@ -1,5 +1,5 @@
 const { nodemailer } = require('nodemailer');
-const { getEmails } = require('../../Infra/Repositories/EmailRepository');
+const { getEmailBySubject } = require('../../Infra/Repositories/EmailRepository');
 
 //#region - Configurando envio de email
 const transporter = nodemailer.createTransport({
@@ -16,13 +16,14 @@ const transporter = nodemailer.createTransport({
 module.exports = {
     //Enviando Email
     async sendEmail(req, res) {
+        const addressee = req.params;
         try {
             //Informações do email
             const mailInfo = {
-                from: getEmails.sender,
-                to: req.params,
-                subject: getEmails.subject,
-                text: getEmails.body,
+                from: await getEmailBySubject.sender,
+                to: addressee,
+                subject: await getEmailBySubject.subject,
+                text: await getEmailBySubject.body,
                 html: ''
             };
             //Envia!!

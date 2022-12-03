@@ -4,6 +4,13 @@ const { Service } = require('../Services/EmailService');
 
 const { EmailController } = express.Router();
 
-EmailController.post('/postEmail', Repo.createEmail);
-EmailController.get('/getEmails', Repo.getEmails);
-EmailController.post('/sendEmail', Service.sendEmail);
+//#region - Posts
+EmailController.post('/post-email', Repo.createEmail);
+EmailController.post('/send-email', Service.sendEmail);
+//#endregion
+
+//#region - Gets
+EmailController.get('/get-emails', Repo.getEmails);
+EmailController.get('/get-emails-by-subject', Repo.getEmailBySubject);
+EmailController.get('/get-all-emails-by-subject', Repo.getAllEmailsBySubject);
+//#endregion
