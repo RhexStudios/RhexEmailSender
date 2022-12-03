@@ -1,6 +1,8 @@
 const path = require('path');
 
 module.exports = {
+  //Caminho para puxar configurações das migrations
   config: path.resolve(__dirname, 'src', 'Config', 'DbConfig.js'),
-  'migrations-path': path.resolve(__dirname, 'src', 'Config', 'Migrations'),
+  //Caminho de armazenamento das migrations
+  'migrations-path': path.resolve(__dirname, 'src', 'Infra', 'Migrations'),
 };
