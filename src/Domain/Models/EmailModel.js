@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Sequelize, Model, DataTypes } = require('sequelize');
 
 class Email extends Model {
   static init ( connection ) {
@@ -12,10 +12,5 @@ class Email extends Model {
     })
   }
 }
-
-(async () => {
-  //Sincronizando tabela criada pelo sequelize, se e somente se, a tabela se chamar "Emails"
-  await sequelize.sync({ force: true, match: /Emails%/});
-}) ();
 
 module.exports = Email;

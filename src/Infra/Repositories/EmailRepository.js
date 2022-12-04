@@ -1,4 +1,4 @@
-const email = require('../Domain/Models/EmailModel');
+const email = require('../../Domain/Models/EmailModel');
 
 module.exports = {
   //#region - Post -

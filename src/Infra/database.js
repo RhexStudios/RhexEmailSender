@@ -1,12 +1,13 @@
+const express = require('express');
 const Sequelize = require('sequelize');
-const config = require('../Config/DbConfig');
-const { User } = require('../Domain/Models/EmailModel');
+const DbConfig = require('../Config/DbConfig');
+const User = require('../Domain/Models/EmailModel');
 
 const connection = new Sequelize(
-  variables.dbConfig.database,
-  variables.dbConfig.username,
-  variables.dbConfig.password,
-  variables.dbConfig
+  DbConfig.database,
+  DbConfig.username,
+  DbConfig.password,
+  DbConfig
 );
 
 User.init( connection );
