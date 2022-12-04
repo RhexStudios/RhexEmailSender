@@ -1,17 +1,5 @@
-const { nodemailer } = require('nodemailer');
 const { getEmailBySubject } = require('../../Infra/Repositories/EmailRepository');
-
-//#region - Configurando envio de email
-const transporter = nodemailer.createTransport({
-  port:465,
-  service: 'gmail',
-  auth: {
-      user: 'henriquegs002@gmail.com',
-      pass: 'nezlmrvivdnpvggl'
-  },
-  secure: true
-});
-//#endregion
+const EmailConfig = require('../../Config/EmailConfig');
 
 module.exports = {
     //Enviando Email
@@ -27,7 +15,7 @@ module.exports = {
                 html: ''
             };
             //Envia!!
-            transporter.sendMail (mailInfo);
+            EmailConfig.sendMail(mailInfo);
 
             res.json ( transporter );
             res.sendStatus( 200 );
