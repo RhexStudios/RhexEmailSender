@@ -1,12 +1,14 @@
 'use strict';
-var DataTypes = require('sequelize/lib/data-types');
+
+const {DataTypes, Sequelize } = require('sequelize');
+
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
     return queryInterface.createTable('emails', {
       id: {
-        type: DataTypes.NUMBER,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false,
@@ -20,7 +22,7 @@ module.exports = {
       //Remetente - Quem envia
       sender: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
       },
       //Assunto
       subject: {
