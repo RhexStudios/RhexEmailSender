@@ -5,4 +5,5 @@ module.exports = {
   config: path.resolve(__dirname, 'src', 'Config', 'DbConfig.js'),
   //Caminho de armazenamento das migrations
   'migrations-path': path.resolve(__dirname, 'src', 'Infra', 'Migrations'),
+  'models-path': path.resolve(__dirname, 'src', 'Domain', 'Models'),
 };
