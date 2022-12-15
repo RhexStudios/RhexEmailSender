@@ -22,9 +22,9 @@ module.exports = {
   async getEmails( req, res ) {
     try {
       
-      const emails = await Email.findAll({ limit: 10 });
+      const emails = await email.findAll({ limit: 10 });
 
-      res.send.json( emails );
+      res.json( emails );
       res.sendStatus( 200 );
     } catch (err) {
       console.log( err );
@@ -36,9 +36,9 @@ module.exports = {
     try {
 
       const query = req.params;
-      const email = await Email.findOne({ where: { subject: query } })
+      const emails = await email.findOne({ where: { subject: query } })
       
-      res.send.json ( email );
+      res.send.json ( emails );
       res.sendStatus( 200 );
     } catch ( err ) {
 
@@ -51,9 +51,9 @@ module.exports = {
     try { 
 
       const query = req.params;
-      const email = await Email.findAll({ where: { subject: query } })
+      const emails = await email.findAll({ where: { subject: query } })
       
-      res.send.json ( email );
+      res.send.json ( emails );
       res.sendStatus( 200 );
     } catch ( err ) {
 
