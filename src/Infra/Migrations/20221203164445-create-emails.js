@@ -22,18 +22,21 @@ module.exports = {
       sender: {
         type: DataTypes.STRING,
         allowNull: false,
+        defaultValue: "rhextestemail@mail.com"
       },
       //Assunto
       subject: {
         type: DataTypes.STRING,
         allowNull: false,
         NotEmpty : true,
+        defaultValue: "Teste"
       },
       //Corpo do Email
       body: {
         type: DataTypes.STRING,
         allowNull: false,
         NotEmpty: true,
+        defaultValue: "Teste"
       },
       //Criado na data
       created_at: {
