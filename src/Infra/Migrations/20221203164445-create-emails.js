@@ -33,7 +33,7 @@ module.exports = {
         defaultValue: "Teste"
       },
       //Corpo do Email
-      body: {
+      bodyMail: {
         type: DataTypes.STRING,
         allowNull: false,
         NotEmpty: true,
@@ -50,6 +50,7 @@ module.exports = {
         allowNull: false,
       },
     });
+     
   },
 
   async down (queryInterface, Sequelize) {

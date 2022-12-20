@@ -6,7 +6,7 @@ class Email extends Model {
       addressee: DataTypes.STRING || null,
       sender: DataTypes.STRING,
       subject: DataTypes.STRING,
-      body: DataTypes.STRING,
+      bodyMail: DataTypes.STRING,
     }, {
       sequelize: connection
     })
