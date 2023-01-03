@@ -1,16 +1,15 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
-
-class Email extends Model {
-  static init ( connection ) {
-    super.init( {
-      addressee: DataTypes.STRING || null,
-      sender: DataTypes.STRING,
-      subject: DataTypes.STRING,
-      bodyMail: DataTypes.STRING,
-    }, {
-      sequelize: connection
-    })
+class Email {
+  constructor(addressee, sender, title, description) {
+    this.Addressee = addressee;
+    this.Sender = sender;
+    this.Title = title;
+    this.Description = description;
   }
-}
 
-module.exports = Email;
+  Addressee;
+  Sender;
+  Title;
+  Description;
+
+}
+export default Email;

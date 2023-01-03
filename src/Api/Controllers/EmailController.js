@@ -4,7 +4,6 @@ const { createMail, getMails, getAllMailsBySubject } = require('../../Domain/Mid
 const Service = require('../Services/EmailService');
 const EmailController = express.Router();
 
-
 //#region - Posts
 EmailController.post('/post-email', createMail);
 

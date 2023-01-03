@@ -1,15 +1,19 @@
-const express = require('express');
-const Sequelize = require('sequelize');
+const mysql = require('mysql');
 const DbConfig = require('../Config/DbConfig');
-const User = require('../Domain/Models/EmailModel');
 
-const connection = new Sequelize(
-  DbConfig.database,
-  DbConfig.username,
-  DbConfig.password,
-  DbConfig
-);
+const connection = mysql.createConnection({
+  host: DbConfig.host,
+  user: DbConfig.username,
+  password: DbConfig.password
+});
 
-User.init( connection );
+connection.connect(function (err) {
+  if (err) throw err;
+  console.log("Conectado!")
+  connection.query("CREATE DATABASE MailSender", function (err, result) {
+    if(err) throw err;
+    console.log("Banco Criado")
+  });
+});
 
 module.exports = connection;

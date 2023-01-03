@@ -1,17 +1,10 @@
-require('../Infra/database');
+const http = require('http');
+const mysql = require('mysql');
+const connection = require ('../infra/database');
 
-const express = require('express');
-const EmailController = require('./Controllers/EmailController');
-const app = express();
-const port = '3333';
-
-app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true }))
-
-app.use( '/', EmailController);
-
-app.listen(port, function () {
-    console.log('rodando na porta 3333!!');
-});
+http.createServer(function (req, res){
+        res.writeHead(200, {'Content-type': 'text/html'});
+        return res.end()
+}).listen(3000); 
 
 
