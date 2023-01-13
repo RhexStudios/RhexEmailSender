@@ -31,7 +31,7 @@ module.exports = {
         NotEmpty : true,
       },
       //Corpo do Email
-      body: {
+      body_mail: {
         type: DataTypes.STRING,
         allowNull: false,
         NotEmpty: true,

@@ -1,13 +1,13 @@
-const email = require('../../Domain/Models/EmailModel');
+const Email = require('../../Domain/Models/EmailModel');
 
 module.exports = {
   //#region - Post -
   async createEmail( req, res ) {
-    const { sender, subject, body } = req.body;
+    const { sender, subject, body_mail } = req.body;
     try {
 
-      const mail = await email.create(
-        { sender, subject, body }
+      const mail = await Email.create(
+        { sender, subject, body_mail }
       );
 
       res.json( mail );
@@ -24,8 +24,8 @@ module.exports = {
       
       const emails = await Email.findAll({ limit: 10 });
 
-      res.send.json( emails );
-      res.sendStatus( 200 );
+      res.json( emails );
+      //res.sendStatus( 200 );
     } catch (err) {
       console.log( err );
       res.sendStatus( 400 );
@@ -38,7 +38,7 @@ module.exports = {
       const query = req.params;
       const email = await Email.findOne({ where: { subject: query } })
       
-      res.send.json ( email );
+      res.json ( email );
       res.sendStatus( 200 );
     } catch ( err ) {
 
