@@ -1,65 +1,45 @@
 const Email = require('../../Domain/Models/EmailModel');
 
-module.exports = {
-  //#region - Post -
-  async createEmail( req, res ) {
-    const { sender, subject, body_mail } = req.body;
-    try {
+//#region - Post -
+const createEmail = async (req, res) => {
+    const { sender, subject, bodyMail } = req.body;
+    const mail = await Email.create(
+        {
+            sender: sender,
+            subject: subject,
+            bodyMail: bodyMail,
+        });
 
-      const mail = await Email.create(
-        { sender, subject, body_mail }
-      );
+    if (mail)
+        res.json(mail);
 
-      res.json( mail );
-      res.sendStatus( 200 );
-    } catch (err) {
-      console.log(err);
-      res.sendStatus( 400 );
-    }
-  },
-  //#endregion 
-  //#region - Get - 
-  async getEmails( req, res ) {
-    try {
-      
-      const emails = await Email.findAll({ limit: 10 });
-
-      res.json( emails );
-      //res.sendStatus( 200 );
-    } catch (err) {
-      console.log( err );
-      res.sendStatus( 400 );
-    }
-  },
-
-  async getEmailBySubject( req, res ) {
-    try {
-
-      const query = req.params;
-      const email = await Email.findOne({ where: { subject: query } })
-      
-      res.json ( email );
-      res.sendStatus( 200 );
-    } catch ( err ) {
-
-      res.json( err );
-      res.sendStatus( 400 );
-    }
-  },
-
-  async getAllEmailsBySubject( req, res ) {
-    try { 
-
-      const query = req.params;
-      const email = await Email.findAll({ where: { subject: query } })
-      
-      res.send.json ( email );
-      res.sendStatus( 200 );
-    } catch ( err ) {
-
-      res.json( err );
-      res.sendStatus( 400 );
-    }
-  }
-  //#endregion
+    res.status(400);
+    console.log('Erro de requisição - ' + mail);
 };
+
+//#endregion 
+//#region - Get - 
+const getEmails = async (req, res) => {
+        const emails = await Email.findAll({ limit: 10 });
+        
+        if(emails){
+            res.json(emails);
+
+        res.sendStatus(404);
+        console.log('Erro de requisição - ' + emails);
+    }
+};
+
+const getAllEmailsBySubject = async (req, res) => {
+        const query = req.params;
+        const emails = await Email.findAll({ where: { subject: query } });
+
+        if(emails)
+            res.json(emails);
+
+        res.sendStatus(400);
+        console.log('Erro de requisição - ' + emails);
+};
+//#endregion
+
+module.exports = { createEmail, getEmails, getAllEmailsBySubject };
