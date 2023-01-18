@@ -11,10 +11,10 @@ const createEmail = async (req, res) => {
         });
 
     if (mail)
-        res.json(mail);
+        return res.status(200).json(mail);
 
-    res.status(400);
     console.log('Erro de requisição - ' + mail);
+    return res.status(400).json({ message: "algo de errado não está certo." });
 };
 
 //#endregion 

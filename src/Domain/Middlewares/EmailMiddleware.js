@@ -1,29 +1,29 @@
 const express = require('express');
 const { createEmail, getEmails, getEmailBySubject, getAllEmailsBySubject } = require('../../Infra/Repositories/EmailRepository');
 
-function createMail (options) {
-  return async function (req, res) {
+const NewMailValidation = async function (req, res, next) {
     const mail = {
       sender: req.body.sender,
       subject: req.body.subject,
-      body: req.body.body,
+      body: req.body.bodyMail,
     }
+    const emailValidation = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const validation = emailValidation.test(sender);
 
-    if (!sender)
-        res.send('nenhum remetente');
-    if (!subject)
-        res.send('nenhum título');
-    if (!bodyMail)
-        res.send('nenhum corpo');
+    //Se não for preenchido alguns dos campos
+    if ( !sender || !subject || !bodyMail )
+        res.status(400).json({ message: 'Preencha o(s) campo(s) corretamente.' });
+    //Validando email (sender)
+    if ( sender.length > 254 || !validation )
+      res.status(401).json({ message: 'Remetente inválido, use outro email.' })
 
     try {
-      const result = await createEmail(mail);
-      res.json(result);
+      res.send(mail)
+      next();
     } catch {
-      throw new Error('Não foi possível cadastrar novo email.');
+      throw new Error('algo de errado não está certo.');
     }
   }
-};
 
 function getMails () {
   return async function(req, res) {
