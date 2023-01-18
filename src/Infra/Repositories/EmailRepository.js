@@ -14,7 +14,7 @@ const createEmail = async (req, res) => {
         return res.status(200).json(mail);
 
     console.log('Erro de requisição - ' + mail);
-    return res.status(400).json({ message: "algo de errado não está certo." });
+    return res.status(400).json({ message: "Não foi possível cadastrar novo email." });
 };
 
 //#endregion 
