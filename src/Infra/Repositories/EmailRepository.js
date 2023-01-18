@@ -7,7 +7,7 @@ const createEmail = async (req, res) => {
         {
             sender: sender,
             subject: subject,
-            bodyMail: bodyMail,
+            bodyMail: bodyMail
         });
 
     if (mail)
@@ -24,20 +24,20 @@ const getEmails = async (req, res) => {
         
         if(emails){
             res.json(emails);
-
+        
         res.sendStatus(404);
         console.log('Erro de requisição - ' + emails);
     }
 };
 
 const getAllEmailsBySubject = async (req, res) => {
-        const query = req.params;
-        const emails = await Email.findAll({ where: { subject: query } });
+        const query = req.body;
+        const emails = await Email.findAll({where: subject = query});
 
         if(emails)
             res.json(emails);
-
-        res.sendStatus(400);
+        else
+            res.sendStatus(400);
         console.log('Erro de requisição - ' + emails);
 };
 //#endregion
