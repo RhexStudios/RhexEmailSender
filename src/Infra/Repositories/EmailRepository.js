@@ -2,12 +2,12 @@ const Email = require('../../Domain/Models/EmailModel');
 
 //#region - Post -
 const createEmail = async (req, res) => {
-    const { sender, subject, bodyMail } = req.body;
+    const { sender, subject, body_mail } = req.body;
     const mail = await Email.create(
         {
-            sender: sender,
-            subject: subject,
-            bodyMail: bodyMail
+            sender,
+            subject,
+            body_mail
         });
 
     if (mail)

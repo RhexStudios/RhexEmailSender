@@ -1,4 +1,4 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const {Model, DataTypes } = require('sequelize');
 
 class Email extends Model {
   static init ( connection ) {
@@ -6,7 +6,7 @@ class Email extends Model {
       addressee: DataTypes.STRING || null,
       sender: DataTypes.STRING,
       subject: DataTypes.STRING,
-      bodyMail: DataTypes.STRING,
+      body_mail: DataTypes.STRING,
     }, {
       sequelize: connection
     })

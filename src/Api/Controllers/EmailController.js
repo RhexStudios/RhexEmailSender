@@ -1,7 +1,7 @@
 
 const express = require('express');
 const { NewMailValidation} = require('../../Domain/Middlewares/EmailMiddleware');
-const { getEmails, getAllEmailsBySubject } = require('../../Infra/Repositories/EmailRepository');
+const { getEmails, getAllEmailsBySubject, createEmail } = require('../../Infra/Repositories/EmailRepository');
 const Service = require('../Services/EmailService');
 const EmailController = express.Router();
 

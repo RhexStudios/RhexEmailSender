@@ -33,7 +33,7 @@ module.exports = {
         defaultValue: "Teste"
       },
       //Corpo do Email
-      bodyMail: {
+      body_mail: {
         type: DataTypes.STRING,
         allowNull: false,
         NotEmpty: true,

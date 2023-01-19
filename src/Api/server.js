@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use( '/', EmailController);
 
+
 app.listen(port, function () {
     console.log('\n Rodando na porta 3333!! \n');
 });

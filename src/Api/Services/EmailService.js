@@ -4,7 +4,7 @@ const EmailConfig = require('../../Config/EmailConfig');
 module.exports = {
     //Enviando Email
     async sendEmail(req, res) {
-        const addressee = req.params;
+        const addressee = req.body;
         try {
             //Informações do email
             const mailInfo = {
@@ -17,11 +17,11 @@ module.exports = {
             //Envia!!
             EmailConfig.sendMail(mailInfo);
 
-            res.json ( transporter );
-            res.sendStatus( 200 );
+            res.json( transporter );
+        //res.sendStatus( 200 );
         } catch ( err ) {
             res.json ( err );
-            res.sendStatus( 400 );
+            //res.sendStatus( 400 );
         }
     }
 }
