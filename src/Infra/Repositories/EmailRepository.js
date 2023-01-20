@@ -9,6 +9,19 @@ const createEmail = async (req, res) => {
             subject,
             body_mail
         });
+    
+        const emailValidation = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+        const validation = emailValidation.test(mail.sender);
+    
+        //Se não for preenchido alguns dos campos
+        if ( !mail.sender || !mail.subject || !mail.body_mail ){
+            console.log(mail)
+            res.status(400).json({ message: 'Preencha o(s) campo(s) corretamente.' });
+        }
+        //Validando email (sender)
+        else if ( mail.sender.length > 254 || !validation ){
+          res.status(401).json({ message: 'Remetente inválido, use outro email.' })
+        }
 
     if (mail)
         return res.status(200).json(mail);

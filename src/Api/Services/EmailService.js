@@ -18,7 +18,7 @@ module.exports = {
             EmailConfig.sendMail(mailInfo);
 
             res.json( transporter );
-        //res.sendStatus( 200 );
+            //res.sendStatus( 200 );
         } catch ( err ) {
             res.json ( err );
             //res.sendStatus( 400 );

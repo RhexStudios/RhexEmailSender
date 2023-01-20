@@ -1,13 +1,11 @@
-
 const express = require('express');
-const { NewMailValidation} = require('../../Domain/Middlewares/EmailMiddleware');
 const { getEmails, getAllEmailsBySubject, createEmail } = require('../../Infra/Repositories/EmailRepository');
 const Service = require('../Services/EmailService');
 const EmailController = express.Router();
 
 
 //#region - Posts
-EmailController.post('/post-email', NewMailValidation);
+EmailController.post('/post-email', createEmail);
 
 EmailController.post('/send-email', Service.sendEmail);
 //#endregion
