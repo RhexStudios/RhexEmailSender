@@ -8,10 +8,10 @@ module.exports = {
         try {
             //Informações do email
             const mailInfo = {
-                from: await getEmailBySubject.sender,
+                from: await getEmailById.sender,
                 to: addressee,
-                subject: await getEmailBySubject.subject,
-                text: await getEmailBySubject.body,
+                subject: await getEmailById.subject,
+                text: await getEmailById.body,
                 html: ''
             };
             //Envia!!
