@@ -56,7 +56,8 @@ const getAllEmailsBySubject = async (req, res) => {
 
 const getEmailById = async (req, res) => {
     const query = req.params;
-    const email = await Email.findAll({ where: id = query });
+    const email = await Email.findOne({ where: id = query });
+
 
     if(email)
         res.json(email);

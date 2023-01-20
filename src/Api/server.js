@@ -1,4 +1,5 @@
 require('../Infra/database');
+const {EmailConfig} = require('../Config/EmailConfig');
 
 const express = require('express');
 
