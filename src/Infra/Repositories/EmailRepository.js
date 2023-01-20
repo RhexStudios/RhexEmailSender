@@ -58,13 +58,24 @@ const getEmailById = async (req, res) => {
     const query = req.params;
     const email = await Email.findOne({ where: id = query });
 
-
     if(email)
         res.json(email);
     else
         res.sendStatus(400);
     console.log( 'Erro de requisição - ' + email);
 }
+
+const getEmailToSend = async(req, res, next) => {
+    const query = req.params;
+    const email = await Email.findOne({ where: id = query });
+
+    if(email)
+        res.json(email);
+    else
+        res.sendStatus(400);
+    console.log('Erro de requisição - ' + email);
+    next();
+}
 //#endregion
 
-module.exports = { createEmail, getEmails, getAllEmailsBySubject, getEmailById };
+module.exports = { createEmail, getEmails, getAllEmailsBySubject, getEmailById, getEmailToSend };

@@ -1,5 +1,5 @@
 const express = require('express');
-const { getEmails, getAllEmailsBySubject, createEmail, getEmailById } = require('../../Infra/Repositories/EmailRepository');
+const { getEmails, getAllEmailsBySubject, createEmail, getEmailById, getEmailToSend } = require('../../Infra/Repositories/EmailRepository');
 const Service = require('../Services/EmailService');
 const EmailController = express.Router();
 
@@ -7,7 +7,7 @@ const EmailController = express.Router();
 //#region - Posts
 EmailController.post('/post-email', createEmail);
 
-EmailController.post('/send-email/:id', Service.sendEmail);
+EmailController.post('/send-email/:id', getEmailToSend, Service.sendEmail);
 //#endregion
 
 //#region - Gets
