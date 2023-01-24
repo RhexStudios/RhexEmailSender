@@ -35,45 +35,48 @@ const createEmail = async (req, res) => {
 const getEmails = async (req, res) => {
         const emails = await Email.findAll({ limit: 10 });
         
-        if(emails){
-            res.json(emails);
-        
-        res.sendStatus(404);
-        console.log('Erro de requisição - ' + emails);
-    }
+        if(!emails)
+        {
+            res.sendStatus(404);
+            console.log('Erro de requisição - ' + emails);
+        }
+        res.json(emails);
 };
 
 const getAllEmailsBySubject = async (req, res) => {
         const query = req.body;
         const emails = await Email.findAll({where: subject = query});
 
-        if(emails)
-            res.json(emails);
-        else
+        if(!emails)
+        {
             res.sendStatus(400);
-        console.log('Erro de requisição - ' + emails);
-};
+            console.log('Erro de requisição - ' + emails);
+        }
+        res.json(emails);
+    };
 
 const getEmailById = async (req, res) => {
     const query = req.params;
     const email = await Email.findOne({ where: id = query });
 
-    if(email)
-        res.json(email);
-    else
+    if(!email)
+    {
         res.sendStatus(400);
-    console.log( 'Erro de requisição - ' + email);
+        console.log( 'Erro de requisição - ' + email);
+    }
+    res.json(email);
 }
 
 const getEmailToSend = async(req, res, next) => {
     const query = req.params;
     const email = await Email.findOne({ where: id = query });
 
-    if(email)
-        res.json(email);
-    else
+    if(!email)
+    {
         res.sendStatus(400);
-    console.log('Erro de requisição - ' + email);
+        console.log('Erro de requisição - ' + email); 
+    }
+    res.json(email);
     next();
 }
 //#endregion
