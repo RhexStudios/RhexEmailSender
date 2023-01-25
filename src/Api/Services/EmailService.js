@@ -1,29 +1,35 @@
-const { getEmailById } = require('../../Infra/Repositories/EmailRepository');
+const { getEmailById, getEmailToSend } = require('../../Infra/Repositories/EmailRepository');
 const { EmailConfig, mountEmail } = require('../../Config/EmailConfig');
 
 module.exports = {
     //Enviando Email
-    async sendEmail(req, res) {
-      
-        const addressee = req.body;
-        //informações do email
-        const mail = {
-            from: req.params.sender,
-            to: addressee,
-            subject: req.params.subject,
-            text: req.params.body_mail
-        }
+    async sendEmail(req, res, next) {
 
-        await mountEmail({ mail });
-        try {
-            //Envia!!
-            EmailConfig.sendMail(mail);
+        const email = getEmailToSend(req.params).then(data => {
 
-            res.json( transporter );
-            //res.sendStatus( 200 );
-        } catch ( err ) {
-            res.json ( err );
-            //res.sendStatus( 400 );
+            const addressee = req.body;
+            //informações do email
+            const mail = {
+                from: data.sender,
+                to: addressee.addressee,
+                subject: data.subject,
+                text: data.body_mail
+            }
+            
+            console.log(mail)
+    
+            try {
+                //Envia!!
+                EmailConfig.sendMail(mail);
+    
+                res.json( transporter );
+                //res.sendStatus( 200 );
+            } catch ( err ) {
+                res.json ( err );
+                //res.sendStatus( 400 );
+            }
         }
+            
+        );
     }
 }

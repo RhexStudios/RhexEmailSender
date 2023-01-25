@@ -19,8 +19,7 @@ const mountEmail = async (req, res) => {
             subject: subject,
             text: body_mail
         };
-    console.log(mailInfo);
     res.send({ mailInfo });
   }
 
-module.exports = EmailConfig;
+module.exports = { EmailConfig, mountEmail };
