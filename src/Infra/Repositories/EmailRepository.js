@@ -69,6 +69,7 @@ const getEmailById = async (req, res) => {
 
 const getEmailToSend = async(req, res) => {
     const query = req.params;
+    console.log(query);
     const email = await Email.findOne({ where: id = query });
 
     if(!email)

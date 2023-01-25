@@ -3,9 +3,13 @@ const { EmailConfig, mountEmail } = require('../../Config/EmailConfig');
 
 module.exports = {
     //Enviando Email
-    async sendEmail(req, res, next) {
+    async sendEmail(req, res) {
 
-        const email = getEmailToSend(req.params).then(data => {
+        const query = req.params.id;
+        console.log(query);
+        const mailData = getEmailToSend(req, res).then(data => {
+
+            console.log(data);
 
             const addressee = req.body;
             //informações do email

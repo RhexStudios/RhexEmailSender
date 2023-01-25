@@ -8,8 +8,7 @@ const EmailController = express.Router();
 //#region - Posts
 EmailController.post('/post-email', createEmail);
 
-EmailController.post('/send-email/:id',
-    Service.sendEmail, EmailConfig.sendMail);
+EmailController.post('/send-email/:id', Service.sendEmail);
 //#endregion
 
 //#region - Gets
