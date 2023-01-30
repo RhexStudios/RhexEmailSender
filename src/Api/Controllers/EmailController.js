@@ -1,18 +1,20 @@
 const express = require('express');
-const EmailRepository = require('../../Infra/Repositories/EmailRepository');
+const { getEmails, getAllEmailsBySubject, createEmail, getEmailById, getEmailToSend } = require('../../Infra/Repositories/EmailRepository');
 const Service = require('../Services/EmailService');
-
+const { EmailConfig } = require("../../Config/EmailConfig");
 const EmailController = express.Router();
 
+
 //#region - Posts
-EmailController.post('/post-email', EmailRepository.createEmail);
-EmailController.post('/send-email', Service.sendEmail);
+EmailController.post('/post-email', createEmail);
+
+EmailController.post('/send-email/:id', Service.sendEmail);
 //#endregion
 
 //#region - Gets
-EmailController.get('/get-emails', EmailRepository.getEmails);
-EmailController.get('/get-emails-by-subject', EmailRepository.getEmailBySubject);
-EmailController.get('/get-all-emails-by-subject', EmailRepository.getAllEmailsBySubject);
+EmailController.get('/get-emails', getEmails);
+EmailController.get('/get-email-by-id/:id', getEmailById);
+EmailController.get('/get-all-emails-by-subject', getAllEmailsBySubject);
 //#endregion
 
 module.exports = EmailController;

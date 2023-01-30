@@ -1,12 +1,12 @@
-const { Sequelize, Model, DataTypes } = require('sequelize');
+const {Model, DataTypes } = require('sequelize');
 
 class Email extends Model {
   static init ( connection ) {
     super.init( {
-      addressee: DataTypes.STRING,
+      addressee: DataTypes.STRING || null,
       sender: DataTypes.STRING,
       subject: DataTypes.STRING,
-      body: DataTypes.STRING,
+      body_mail: DataTypes.STRING,
     }, {
       sequelize: connection
     })
